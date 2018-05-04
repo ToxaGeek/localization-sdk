@@ -1,1 +1,1 @@
-"# localization-sdk" 
+# localization-sdk
