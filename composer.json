@@ -1,0 +1,21 @@
+{
+    "name": "toxageek/localization-sdk",
+    "description": "Localization SDK for Laravel",
+    "authors": [
+        {
+            "name": "ToxaGeek",
+            "email": "toxageek@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "ToxaGeek\\LocalizationSDK\\": "src/"
+        }
+    },
+    "license": "MIT"
+}
