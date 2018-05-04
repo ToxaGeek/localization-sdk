@@ -25,7 +25,11 @@ class LocalizationServiceProvider extends ServiceProvider
         ]);
 
         if (Cookie::get('localization', null) == null) {
-            Cookie::queue(Cookie::make('localization', config('localization.default', null), 43200));
+            if (auth()->check() && method_exists(auth()->user(), 'getLocalization')) {
+                Cookie::queue(Cookie::make('localization', auth()->user()->getLocalization(), 43200));
+            } else {
+                Cookie::queue(Cookie::make('localization', config('localization.default', null), 43200));
+            }
         }
     }
 
