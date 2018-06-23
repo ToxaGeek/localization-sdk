@@ -37,18 +37,22 @@ This will create a `config/localization.php`, that you'll have to run like so:
 
 ## Usage
 
-Use like `{{ __('messages.welcome') }}` helper function
+Use `{{ lang('messages.welcome') }}` like `{{ __('messages.welcome') }}` helper function
 
 ```php
-// read from user model by getLocalization() if method exists
-// or default language from config
-// or read from cookie
-{{ __('messages.welcome') }}
+// read local from cookie 'localization' field if exist
+// or default value from 'localization.php' config file if exist,
+// or use default app local
+{{ lang('messages.welcome') }}
 
 // get specific language
-// if language is not active return default value
-{{ __('messages.welcome', [], 'en') }}
+// if language is not active in 'localization.php' config, return default value
+{{ lang('messages.welcome', [], 'en') }}
 ```
+
+`LocalizationServiceProvider` on boot check cookie for `localization` field, if not exist
+set `localization` from `getLocalization()` user model method if exist, or default vaue from 
+`localization.php` config file.
 
 ## License
 
